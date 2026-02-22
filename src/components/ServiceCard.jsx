@@ -1,6 +1,30 @@
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 
 const WHATSAPP_URL = 'https://wa.me/5493815909045'
+
+function BlurImage({ src, alt, className }) {
+    const [loaded, setLoaded] = useState(false)
+    const imgRef = useRef(null)
+
+    return (
+        <div className="relative overflow-hidden w-full h-full">
+            {/* Blur placeholder */}
+            {!loaded && (
+                <div className="absolute inset-0 bg-earth-200/50 animate-pulse" />
+            )}
+            <img
+                ref={imgRef}
+                src={src}
+                alt={alt}
+                loading="lazy"
+                onLoad={() => setLoaded(true)}
+                className={`${className} transition-all duration-700 ${loaded ? 'opacity-100 blur-0 scale-100' : 'opacity-0 blur-sm scale-105'
+                    }`}
+            />
+        </div>
+    )
+}
 
 export default function ServiceCard({ service, index }) {
     return (
@@ -11,9 +35,9 @@ export default function ServiceCard({ service, index }) {
             transition={{ duration: 0.6, delay: index * 0.15 }}
             className="glass-card overflow-hidden group hover:shadow-xl hover:shadow-sage-200/20 transition-all duration-500"
         >
-            {/* Image */}
+            {/* Image with blur loading */}
             <div className="relative h-56 sm:h-64 overflow-hidden">
-                <img
+                <BlurImage
                     src={service.image}
                     alt={service.alt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"

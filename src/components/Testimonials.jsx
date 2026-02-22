@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const testimonials = [
@@ -25,6 +25,8 @@ const testimonials = [
     },
 ]
 
+const AUTOPLAY_INTERVAL = 5000
+
 function StarRating({ count }) {
     return (
         <div className="flex gap-1">
@@ -39,6 +41,17 @@ function StarRating({ count }) {
 
 export default function Testimonials() {
     const [active, setActive] = useState(0)
+    const [isPaused, setIsPaused] = useState(false)
+
+    const goNext = useCallback(() => {
+        setActive((prev) => (prev + 1) % testimonials.length)
+    }, [])
+
+    useEffect(() => {
+        if (isPaused) return
+        const timer = setInterval(goNext, AUTOPLAY_INTERVAL)
+        return () => clearInterval(timer)
+    }, [isPaused, goNext])
 
     return (
         <section id="testimonios" className="section-padding bg-white relative overflow-hidden">
@@ -65,7 +78,11 @@ export default function Testimonials() {
                 </motion.div>
 
                 {/* Testimonial cards */}
-                <div className="max-w-3xl mx-auto">
+                <div
+                    className="max-w-3xl mx-auto"
+                    onMouseEnter={() => setIsPaused(true)}
+                    onMouseLeave={() => setIsPaused(false)}
+                >
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={active}
@@ -99,18 +116,31 @@ export default function Testimonials() {
                         </motion.div>
                     </AnimatePresence>
 
-                    {/* Navigation dots */}
+                    {/* Navigation dots with progress */}
                     <div className="flex justify-center gap-3 mt-8">
                         {testimonials.map((_, i) => (
                             <button
                                 key={i}
                                 onClick={() => setActive(i)}
                                 aria-label={`Ver testimonio ${i + 1}`}
-                                className={`w-3 h-3 rounded-full transition-all duration-300 ${i === active
-                                        ? 'bg-sage-400 w-8'
-                                        : 'bg-earth-200 hover:bg-sage-200'
+                                className={`relative h-3 rounded-full transition-all duration-300 overflow-hidden ${i === active
+                                    ? 'bg-sage-200 w-10'
+                                    : 'bg-earth-200 hover:bg-sage-200 w-3'
                                     }`}
-                            />
+                            >
+                                {i === active && !isPaused && (
+                                    <motion.div
+                                        className="absolute inset-y-0 left-0 bg-sage-400 rounded-full"
+                                        initial={{ width: '0%' }}
+                                        animate={{ width: '100%' }}
+                                        transition={{ duration: AUTOPLAY_INTERVAL / 1000, ease: 'linear' }}
+                                        key={`progress-${active}`}
+                                    />
+                                )}
+                                {i === active && isPaused && (
+                                    <div className="absolute inset-0 bg-sage-400 rounded-full" />
+                                )}
+                            </button>
                         ))}
                     </div>
                 </div>

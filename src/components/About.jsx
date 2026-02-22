@@ -1,4 +1,46 @@
-import { motion } from 'framer-motion'
+import { useEffect, useRef, useState } from 'react'
+import { motion, useInView } from 'framer-motion'
+
+function AnimatedCounter({ target, suffix = '', duration = 2000 }) {
+    const [count, setCount] = useState(0)
+    const ref = useRef(null)
+    const isInView = useInView(ref, { once: true, margin: '-50px' })
+    const isNumber = !isNaN(parseInt(target))
+
+    useEffect(() => {
+        if (!isInView || !isNumber) return
+
+        const end = parseInt(target)
+        const startTime = performance.now()
+
+        const animate = (currentTime) => {
+            const elapsed = currentTime - startTime
+            const progress = Math.min(elapsed / duration, 1)
+            const eased = 1 - Math.pow(1 - progress, 3)
+            const current = Math.round(eased * end)
+
+            setCount(current)
+
+            if (progress < 1) {
+                requestAnimationFrame(animate)
+            }
+        }
+
+        requestAnimationFrame(animate)
+    }, [isInView, target, duration, isNumber])
+
+    return (
+        <span ref={ref}>
+            {isNumber ? `+${count}` : target}{suffix}
+        </span>
+    )
+}
+
+const stats = [
+    { target: '200', suffix: '', label: 'Sesiones realizadas' },
+    { target: '5', suffix: '', label: 'Anos de experiencia' },
+    { target: '100%', suffix: '', label: 'Compromiso contigo', isText: true },
+]
 
 export default function About() {
     return (
@@ -20,11 +62,13 @@ export default function About() {
                                 <img
                                     src="/images/reiki/reiki-2.jpeg"
                                     alt="Terapeuta holistica realizando sesion de reiki con energia sanadora"
+                                    loading="lazy"
                                     className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-md"
                                 />
                                 <img
                                     src="/images/pendulo/pendulo-3.jpeg"
                                     alt="Pendulo hebreo utilizado en sesion de armonizacion de chakras"
+                                    loading="lazy"
                                     className="w-full h-36 sm:h-44 object-cover rounded-2xl shadow-md"
                                 />
                             </div>
@@ -32,11 +76,13 @@ export default function About() {
                                 <img
                                     src="/images/tarot/tarot-3.jpeg"
                                     alt="Cartas de tarot terapeutico en sesion de lectura espiritual"
+                                    loading="lazy"
                                     className="w-full h-36 sm:h-44 object-cover rounded-2xl shadow-md"
                                 />
                                 <img
                                     src="/images/reiki/reiki-3.jpeg"
                                     alt="Ambiente calmo y espiritual preparado para terapia energetica"
+                                    loading="lazy"
                                     className="w-full h-48 sm:h-56 object-cover rounded-2xl shadow-md"
                                 />
                             </div>
@@ -71,16 +117,19 @@ export default function About() {
                             </p>
                         </div>
 
-                        {/* Highlights */}
+                        {/* Animated stats */}
                         <div className="grid grid-cols-3 gap-4 mt-8">
-                            {[
-                                { number: '+200', label: 'Sesiones realizadas' },
-                                { number: '+5', label: 'Anos de experiencia' },
-                                { number: '100%', label: 'Compromiso contigo' },
-                            ].map((stat) => (
+                            {stats.map((stat) => (
                                 <div key={stat.label} className="text-center">
                                     <div className="heading-serif text-2xl sm:text-3xl text-gradient-gold">
-                                        {stat.number}
+                                        {stat.isText ? (
+                                            stat.target
+                                        ) : (
+                                            <AnimatedCounter
+                                                target={stat.target}
+                                                suffix={stat.suffix}
+                                            />
+                                        )}
                                     </div>
                                     <div className="text-earth-300 text-xs sm:text-sm mt-1">{stat.label}</div>
                                 </div>

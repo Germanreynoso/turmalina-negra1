@@ -9,6 +9,7 @@ const navLinks = [
     { label: 'Sobre Mi', href: '#sobre-mi' },
     { label: 'Beneficios', href: '#beneficios' },
     { label: 'Testimonios', href: '#testimonios' },
+    { label: 'Preguntas', href: '#preguntas' },
     { label: 'Contacto', href: '#contacto' },
 ]
 
@@ -30,8 +31,8 @@ export default function Navbar() {
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                    ? 'bg-beige-50/95 backdrop-blur-md shadow-lg shadow-earth-200/20'
-                    : 'bg-transparent'
+                ? 'bg-beige-50/95 backdrop-blur-md shadow-lg shadow-earth-200/20'
+                : 'bg-transparent'
                 }`}
         >
             <div className="container-max mx-auto px-4 sm:px-6">

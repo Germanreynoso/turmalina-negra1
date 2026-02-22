@@ -1,29 +1,44 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 
 const WHATSAPP_URL = 'https://wa.me/5493815909045'
 
 export default function Hero() {
+    const sectionRef = useRef(null)
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ['start start', 'end start'],
+    })
+
+    const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
+    const textY = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+
     return (
         <section
             id="inicio"
+            ref={sectionRef}
             className="relative min-h-screen flex items-center overflow-hidden"
         >
-            {/* Background layers */}
-            <div className="absolute inset-0">
+            {/* Parallax background */}
+            <motion.div className="absolute inset-0" style={{ y: bgY }}>
                 <img
                     src="/images/tarot/tarot-2.jpeg"
                     alt="Sesion de tarot terapeutico con cartas y cristales en ambiente espiritual"
-                    className="w-full h-full object-cover"
+                    className="w-full h-[120%] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-earth-500/80 via-earth-400/60 to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-t from-beige-50/90 via-transparent to-earth-500/30" />
-            </div>
+            </motion.div>
 
             {/* Sacred geometry decorative elements */}
             <div className="sacred-geometry top-20 -right-32 opacity-20 animate-[spin_60s_linear_infinite]" />
             <div className="sacred-geometry -bottom-20 -left-20 w-[400px] h-[400px] opacity-10 animate-[spin_80s_linear_infinite_reverse]" />
 
-            <div className="relative z-10 section-padding container-max w-full">
+            <motion.div
+                style={{ y: textY, opacity }}
+                className="relative z-10 section-padding container-max w-full"
+            >
                 <div className="max-w-2xl">
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
@@ -85,7 +100,7 @@ export default function Hero() {
                         </a>
                     </motion.div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Bottom gradient fade */}
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-beige-50 to-transparent" />
