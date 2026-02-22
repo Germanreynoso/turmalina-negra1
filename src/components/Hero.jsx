@@ -23,8 +23,8 @@ export default function Hero() {
             {/* Parallax background */}
             <motion.div className="absolute inset-0" style={{ y: bgY }}>
                 <img
-                    src="/images/tarot/tarot-2.jpeg"
-                    alt="Sesion de tarot terapeutico con cartas y cristales en ambiente espiritual"
+                    src="/images/portada.jpeg"
+                    alt="Turmalina Negra - Terapias holisticas y energeticas"
                     className="w-full h-[120%] object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-earth-500/80 via-earth-400/60 to-transparent" />
