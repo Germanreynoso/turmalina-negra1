@@ -1,0 +1,192 @@
+@import "tailwindcss";
+
+@theme {
+  --color-beige-50: #fdfbf7;
+  --color-beige-100: #f8f1e4;
+  --color-beige-200: #f0e3cc;
+  --color-beige-300: #e5d0ab;
+  --color-beige-400: #d4b88a;
+  --color-beige-500: #c4a06e;
+  
+  --color-sage-50: #f4f7f4;
+  --color-sage-100: #e4ede4;
+  --color-sage-200: #c8d9c8;
+  --color-sage-300: #a3bfa3;
+  --color-sage-400: #7ea37e;
+  --color-sage-500: #5c875c;
+  --color-sage-600: #486c48;
+  
+  --color-lavender-50: #f8f5fc;
+  --color-lavender-100: #ede5f7;
+  --color-lavender-200: #daccef;
+  --color-lavender-300: #c1a9e3;
+  --color-lavender-400: #a785d4;
+  --color-lavender-500: #8e65c4;
+  
+  --color-gold-50: #fdfbf0;
+  --color-gold-100: #f9f0d0;
+  --color-gold-200: #f0dea0;
+  --color-gold-300: #e5c86e;
+  --color-gold-400: #d4ad3c;
+  --color-gold-500: #b8922a;
+  
+  --color-earth-50: #f7f4f0;
+  --color-earth-100: #ebe4da;
+  --color-earth-200: #d4c4ab;
+  --color-earth-300: #b89f7a;
+  --color-earth-400: #9c7f55;
+  --color-earth-500: #7d6440;
+
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Raleway', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-beige-50);
+    color: #3d3528;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-lavender-200);
+    color: #3d3528;
+  }
+}
+
+@layer components {
+  .heading-serif {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    line-height: 1.2;
+    color: #3d3528;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: linear-gradient(135deg, var(--color-sage-400), var(--color-sage-500));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(94, 135, 94, 0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(94, 135, 94, 0.4);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    background: transparent;
+    color: var(--color-sage-500);
+    border: 2px solid var(--color-sage-400);
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-sage-50);
+    transform: translateY(-2px);
+  }
+
+  .btn-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(135deg, var(--color-gold-400), var(--color-gold-500));
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(212, 173, 60, 0.35);
+  }
+
+  .btn-gold:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(212, 173, 60, 0.5);
+  }
+
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
+
+  .container-max {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 1.25rem;
+  }
+
+  .sacred-geometry {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border: 1px solid rgba(193, 169, 227, 0.15);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+}
+
+@layer utilities {
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold-400), var(--color-gold-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-sage {
+    background: linear-gradient(135deg, var(--color-sage-400), var(--color-sage-600));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 7rem 2rem;
+  }
+}
