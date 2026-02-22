@@ -10,9 +10,9 @@ export default function Hero() {
         offset: ['start start', 'end start'],
     })
 
-    const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '30%'])
-    const textY = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
-    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0])
+    const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+    const textY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+    const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0])
 
     return (
         <section
@@ -25,10 +25,10 @@ export default function Hero() {
                 <img
                     src="/images/portada.jpeg"
                     alt="Turmalina Negra - Terapias holisticas y energeticas"
-                    className="w-full h-[120%] object-cover"
+                    className="w-full h-[120%] object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-earth-500/80 via-earth-400/60 to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-beige-50/90 via-transparent to-earth-500/30" />
+                <div className="absolute inset-0 bg-gradient-to-r from-earth-500/60 via-earth-400/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-beige-50/70 via-transparent to-earth-500/20" />
             </motion.div>
 
             {/* Sacred geometry decorative elements */}
@@ -44,13 +44,14 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.2 }}
-                        className="mb-6"
+                        className="mb-8"
                     >
-                        <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-earth-500/40 backdrop-blur-md border border-gold-300/30 text-sm font-medium tracking-wide">
-                            <img src="/images/logo/logo.jpeg" alt="Logo Turmalina Negra" className="w-6 h-6 rounded-full object-cover ring-1 ring-gold-300/50" />
-                            <span className="heading-serif text-gold-300 text-base">Turmalina Negra</span>
-                            <span className="w-px h-4 bg-beige-100/30" />
-                            <span className="text-beige-100/80">Terapias Holisticas</span>
+                        <span className="inline-flex items-center gap-4 px-8 py-3.5 rounded-full bg-earth-500/50 backdrop-blur-xl border-2 border-gold-300/40 shadow-2xl shadow-gold-400/20 text-sm font-medium tracking-wide">
+                            <img src="/images/logo/logo.jpeg" alt="Logo Turmalina Negra" className="w-16 h-16 rounded-full object-cover ring-2 ring-gold-300/60 shadow-lg shadow-black/20" />
+                            <div className="flex flex-col">
+                                <span className="heading-serif text-gold-300 text-2xl leading-none">Turmalina Negra</span>
+                                <span className="text-beige-100/90 text-sm tracking-widest uppercase mt-0.5 font-light">Terapias Holisticas y Arte</span>
+                            </div>
                         </span>
                     </motion.div>
 

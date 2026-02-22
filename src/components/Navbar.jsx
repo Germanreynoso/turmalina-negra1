@@ -43,7 +43,7 @@ export default function Navbar() {
                         <img
                             src="/images/logo/logo.jpeg"
                             alt="Logo Turmalina Negra - Terapias Holisticas"
-                            className="w-11 h-11 md:w-14 md:h-14 rounded-full object-cover ring-2 ring-gold-300/50 group-hover:ring-gold-400 group-hover:shadow-lg group-hover:shadow-gold-300/20 transition-all duration-300"
+                            className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover ring-2 ring-gold-300 group-hover:ring-gold-400 group-hover:scale-110 shadow-xl shadow-earth-500/20 group-hover:shadow-gold-300/30 transition-all duration-500"
                         />
                         <div className="flex flex-col leading-tight">
                             <span className="heading-serif text-lg md:text-xl font-semibold text-gradient-gold group-hover:opacity-90 transition-opacity duration-300">
