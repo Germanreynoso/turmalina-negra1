@@ -6,6 +6,7 @@ import HowItWorks from '../components/HowItWorks'
 import About from '../components/About'
 import Benefits from '../components/Benefits'
 import Gallery from '../components/Gallery'
+import PhoneCaseArt from '../components/PhoneCaseArt'
 import Testimonials from '../components/Testimonials'
 import FAQ from '../components/FAQ'
 import CTA from '../components/CTA'
@@ -25,6 +26,7 @@ export default function Home() {
                 <About />
                 <Benefits />
                 <Gallery />
+                <PhoneCaseArt />
                 <Testimonials />
                 <FAQ />
                 <CTA />
