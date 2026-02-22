@@ -41,12 +41,17 @@ export default function Navbar() {
                     <a href="#inicio" className="flex items-center gap-3 group">
                         <img
                             src="/images/logo/logo.jpeg"
-                            alt="Logo Sabri Terapias Holisticas"
-                            className="w-10 h-10 md:w-12 md:h-12 rounded-full object-cover ring-2 ring-gold-300/50 group-hover:ring-gold-400 transition-all duration-300"
+                            alt="Logo Turmalina Negra - Terapias Holisticas"
+                            className="w-11 h-11 md:w-14 md:h-14 rounded-full object-cover ring-2 ring-gold-300/50 group-hover:ring-gold-400 group-hover:shadow-lg group-hover:shadow-gold-300/20 transition-all duration-300"
                         />
-                        <span className="heading-serif text-lg md:text-xl text-earth-500 group-hover:text-gold-500 transition-colors duration-300">
-                            Sabri
-                        </span>
+                        <div className="flex flex-col leading-tight">
+                            <span className="heading-serif text-lg md:text-xl font-semibold text-gradient-gold group-hover:opacity-90 transition-opacity duration-300">
+                                Turmalina
+                            </span>
+                            <span className="heading-serif text-sm md:text-base tracking-[0.15em] uppercase text-earth-500 group-hover:text-earth-400 transition-colors duration-300">
+                                Negra
+                            </span>
+                        </div>
                     </a>
 
                     {/* Desktop links */}

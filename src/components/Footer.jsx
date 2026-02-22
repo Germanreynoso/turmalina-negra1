@@ -54,10 +54,13 @@ export default function Footer() {
                         <div className="flex items-center gap-3 mb-4">
                             <img
                                 src="/images/logo/logo.jpeg"
-                                alt="Logo Sabri Terapias Holisticas"
-                                className="w-12 h-12 rounded-full object-cover ring-2 ring-gold-400/50"
+                                alt="Logo Turmalina Negra - Terapias Holisticas"
+                                className="w-14 h-14 rounded-full object-cover ring-2 ring-gold-400/50"
                             />
-                            <span className="heading-serif text-2xl text-beige-100">Sabri</span>
+                            <div className="flex flex-col leading-tight">
+                                <span className="heading-serif text-2xl text-gold-300">Turmalina</span>
+                                <span className="heading-serif text-sm tracking-[0.15em] uppercase text-beige-100/80">Negra</span>
+                            </div>
                         </div>
                         <p className="text-beige-200/70 text-sm leading-relaxed">
                             Terapias holisticas y energeticas para tu bienestar integral. Cada sesion es un paso hacia tu mejor version.
@@ -164,7 +167,7 @@ export default function Footer() {
                         &ldquo;La energia que das al universo, vuelve a vos multiplicada&rdquo;
                     </p>
                     <p className="text-beige-200/30 text-xs mt-4">
-                        &copy; {new Date().getFullYear()} Sabri Terapias Holisticas. Todos los derechos reservados.
+                        &copy; {new Date().getFullYear()} Turmalina Negra. Todos los derechos reservados.
                     </p>
                 </div>
             </div>

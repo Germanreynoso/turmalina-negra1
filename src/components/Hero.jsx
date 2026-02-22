@@ -46,8 +46,11 @@ export default function Hero() {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className="mb-6"
                     >
-                        <span className="inline-block px-4 py-1.5 rounded-full bg-gold-100/80 text-gold-500 text-sm font-medium tracking-wide backdrop-blur-sm">
-                            Terapias Holisticas
+                        <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-earth-500/40 backdrop-blur-md border border-gold-300/30 text-sm font-medium tracking-wide">
+                            <img src="/images/logo/logo.jpeg" alt="Logo Turmalina Negra" className="w-6 h-6 rounded-full object-cover ring-1 ring-gold-300/50" />
+                            <span className="heading-serif text-gold-300 text-base">Turmalina Negra</span>
+                            <span className="w-px h-4 bg-beige-100/30" />
+                            <span className="text-beige-100/80">Terapias Holisticas</span>
                         </span>
                     </motion.div>
 
